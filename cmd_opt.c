@@ -4,6 +4,7 @@
 #include <string.h>
 #include "version.h"
 #include "types.h"
+#include "fileio.h"
 
 char ** cmdtok(const char *str, int *argcp, char ***argvp);
 
@@ -41,8 +42,22 @@ stat_t proc_opt(int argc, char **argv)
 stat_t proc_dfse_sh_opt(int argc, char **argv)
 {
         int opt;
+        stat_t fin_stat;
 
-        return 0;
+        if (argc <= 0) {
+                return -1;
+        }
+
+        if (strcmp(argv[0], "create") == 0) {
+                if (argc >= 3) {
+                        fin_stat = create_disk(argv[1], atoi(argv[2]));
+                } else {
+                        fprintf(stderr, "Bad arguments.\n");
+                        fprintf(stderr, "Creating disk file process was terminated.\n");
+                }
+        }
+
+        return fin_stat;
 }
 
 int cntword(const char *str, char key)
@@ -107,4 +122,18 @@ char ** cmdtok(const char *str, int *argcp, char ***argvp)
         }
 
         return *argvp;
+}
+
+stat_t rm_tail_nl(char *str, size_t size)
+{
+        --size;
+
+        while (size--) {
+                if (str[size] == '\n') {
+                        str[size] = '\0';
+                        break;
+                }
+        }
+
+        return size;
 }

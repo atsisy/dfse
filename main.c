@@ -29,8 +29,10 @@ static int main_loop(void)
         char **argv;
 
         while (1) {
+                memset(cmd, 0, CMD_BUFFER_SIZE);
                 printf(">>> ");
                 fgets(cmd, CMD_BUFFER_SIZE, stdin);
+                rm_tail_nl(cmd, CMD_BUFFER_SIZE);
                 cmdtok(cmd, &argc, &argv);
                 if (proc_dfse_sh_opt(argc, argv)) {
                         return -1;

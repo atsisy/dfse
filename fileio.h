@@ -2,12 +2,12 @@
 #define __DFSE_FILEIO_H
 
 /*
- * create_disk.c
- * create_disk_file
+ * diskio.c
+ * create_disk
  * author: Akihiro Takai
- * date: H29/12/9
+ * date: H29/12/10
  */
-stat_t create_disk_file(const char *disk_file_name);
+stat_t create_disk(const char *file_name, size_t size);
 
 /*
  * cmd_opt.c
@@ -24,5 +24,13 @@ char ** cmdtok(const char *str, int *argcp, char ***argvp);
  * date: H29/12/9
  */
 stat_t proc_dfse_sh_opt(int argc, char **argv);
+
+/*
+ * cmd_opt.c
+ * rm_tail_nl
+ * author: Akihiro Takai
+ * date: H29/12/10
+ */
+stat_t rm_tail_nl(char *str, size_t size);
 
 #endif
