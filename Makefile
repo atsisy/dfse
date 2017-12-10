@@ -4,7 +4,7 @@ bin-dir = ./bin
 
 .PHONY: all clean
 
-CC = gcc
+CC = gcc -O2
 
 all: $(objs)
 	@mkdir -p $(bin-dir)

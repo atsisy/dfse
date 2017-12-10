@@ -9,7 +9,7 @@ stat_t create_disk_file(const char *disk_file_name)
 {
         int fd;
 
-        fd = open(disk_file_name, O_CREAT);
+        fd = open(disk_file_name, O_CREAT, 0755);
 
         if (fd == -1) {
                 perror("create disk file");
