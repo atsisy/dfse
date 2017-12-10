@@ -31,7 +31,7 @@ stat_t proc_opt(int argc, char **argv)
 		switch (opt) {
                 case 'v': return put_vinfo();
                 default: // Invalid argument
-                        printf("Bad command line argument.\n"); return -1;
+                        fprintf(stderr, "Bad command line argument.\n"); return -1;
 		}
 	}
 
@@ -81,7 +81,7 @@ char ** spilit(int count, const char *str, char ***strsp)
         result = resultp = (char **)malloc(sizeof(char *) * count);
 
         if (!resultp) {
-                perror("memory alloc error.");
+                fprintf(stderr, "memory alloc error.");
                 return NULL;
         }
 
