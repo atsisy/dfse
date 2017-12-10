@@ -5,6 +5,7 @@
 #include "version.h"
 #include "types.h"
 #include "fileio.h"
+#include "magic.h"
 
 char ** cmdtok(const char *str, int *argcp, char ***argvp);
 
@@ -55,6 +56,8 @@ stat_t proc_dfse_sh_opt(int argc, char **argv)
                         fprintf(stderr, "Bad arguments.\n");
                         fprintf(stderr, "Creating disk file process was terminated.\n");
                 }
+        } else if (strcmp(argv[0], "quit") == 0) {
+                fin_stat = _MAG_QUIT;
         }
 
         return fin_stat;
