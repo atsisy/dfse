@@ -58,6 +58,8 @@ stat_t proc_dfse_sh_opt(int argc, char **argv)
                 }
         } else if (strcmp(argv[0], "quit") == 0) {
                 fin_stat = _MAG_QUIT;
+        } else {
+                fin_stat = _MAG_BADCMD;
         }
 
         return fin_stat;

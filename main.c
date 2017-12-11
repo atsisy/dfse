@@ -34,7 +34,9 @@ static int main_loop(void)
         while (1) {
                 memset(cmd, 0, CMD_BUFFER_SIZE);
                 printf(">>> ");
-                fgets(cmd, CMD_BUFFER_SIZE, stdin);
+                if (!fgets(cmd, CMD_BUFFER_SIZE, stdin)) {
+                        goto out;
+                }
                 rm_tail_nl(cmd, CMD_BUFFER_SIZE);
                 cmdtok(cmd, &argc, &argv);
                 fin_stat = proc_dfse_sh_opt(argc, argv);
@@ -42,6 +44,8 @@ static int main_loop(void)
                 switch (fin_stat) {
                 case _MAG_QUIT:
                         goto out;
+                case _MAG_BADCMD:
+                        puts("Bad command.");
                 default:
                         break;
                 }
