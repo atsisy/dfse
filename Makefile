@@ -1,4 +1,4 @@
-objs = ./obj/main.o ./obj/cmd_opt.o ./obj/diskio.o
+objs = ./obj/main.o ./obj/cmd_opt.o ./obj/diskio.o ./obj/disk_struct.o
 obj-dir = ./obj
 bin-dir = ./bin
 

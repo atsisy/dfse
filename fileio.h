@@ -1,6 +1,55 @@
 #ifndef __DFSE_FILEIO_H
 #define __DFSE_FILEIO_H
 
+#include <stddef.h>
+#include "types.h"
+
+struct block {
+
+        /*
+         * Size of a block of disk
+         */
+        u64 bsz;
+
+        /*
+         * block buffer
+        */
+        u8 *buffer;
+
+};
+
+/*
+ * disk_struct.c
+ * block_init
+ * author: Akihiro Takai
+ * date: H29/12/13
+ */
+struct block *block_init(struct block *block, u64 size);
+
+
+struct disk {
+
+        /*
+         * file descriptor
+         */
+        int fd;
+
+        /*
+         * Number of block disk has
+         */
+        u64 dbsz;
+
+};
+
+/*
+ * disk_struct.c
+ * disk_init
+ * author: Akihiro Takai
+ * date: H29/12/13
+ */
+struct disk *disk_init(struct disk *disk, u64 dbsize);
+
+
 /*
  * diskio.c
  * create_disk

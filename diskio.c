@@ -51,3 +51,8 @@ stat_t create_disk(const char *file_name, size_t size)
 
         return 0;
 }
+
+stat_t generic_write_disk(const char *buf, size_t count)
+{
+        
+}
